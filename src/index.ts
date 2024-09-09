@@ -1,1 +1,2 @@
-export * from './lib/fp-robot-kata-typescript';
+export * from './lib/Data';
+export * from './lib/Game';
