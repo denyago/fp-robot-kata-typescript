@@ -1,0 +1,30 @@
+{
+  "name": "fp-robot-kata-typescript",
+  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "includedScripts": [],
+  "sourceRoot": "src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/fp-robot-kata-typescript",
+        "main": "./src/index.ts",
+        "tsConfig": "./tsconfig.lib.json",
+        "assets": ["*.md"]
+      }
+    },
+    "lint": {
+      "command": "eslint ./src ./package.json"
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "coverage/fp-robot-kata-typescript"
+      }
+    }
+  }
+}
