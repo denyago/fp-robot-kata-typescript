@@ -62,8 +62,8 @@ export function parseMap(input: string): Map {
  *   UDLR
  */
 export function parseCommands(input: string): Direction[] {
-  return input.split('').map((c) => {
-    switch (c) {
+  return input.split('').map((command) => {
+    switch (command) {
       case 'U':
         return Direction.UP;
       case 'D':
@@ -73,7 +73,7 @@ export function parseCommands(input: string): Direction[] {
       case 'R':
         return Direction.RIGHT;
       default:
-        throw new Error(`Unknown command: ${c}`);
+        throw new Error(`Unknown command: ${command}`);
     }
   });
 }
