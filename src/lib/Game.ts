@@ -37,12 +37,10 @@ function canRobotMove(textMap: string, moveCommand: string): boolean {
 }
 
 export function moveRobot(textMap: string, moveCommands: string): string {
-  console.log('textMap\n', textMap, '\nmoveCommands\n', moveCommands);
   if (moveCommands.length === 0) {
     return textMap;
   }
   if (!canRobotMove(textMap, moveCommands[0])) {
-    createError()
     return textMap;
   }
   if (moveCommands[0] === 'R') {
