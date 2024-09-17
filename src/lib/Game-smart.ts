@@ -1,12 +1,14 @@
+import { text } from 'stream/consumers';
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
-function swapStr(str: string, first: number, last: number): string {
+function swapStr(str, first, last) {
   return (
-    str.substring(0, first) +
+    str.substr(0, first) +
     str[last] +
     str.substring(first + 1, last) +
     str[first] +
-    str.substring(last + 1, str.length)
+    str.substr(last + 1)
   );
 }
 function canRobotMove(textMap: string, moveCommand: string): boolean {
@@ -36,7 +38,16 @@ function canRobotMove(textMap: string, moveCommand: string): boolean {
   }
 }
 
+function isValidCommand(command: string): boolean {
+  return ['R', 'L', 'U', 'D'].includes(command);
+}
+
+function createError(command: string): string {
+  return `${command} is not a valid command`;
+}
+
 export function moveRobot(textMap: string, moveCommands: string): string {
+  console.log('textMap\n', textMap, '\nmoveCommands\n', moveCommands);
   if (moveCommands.length === 0) {
     return textMap;
   }
@@ -54,20 +65,20 @@ export function moveRobot(textMap: string, moveCommands: string): string {
   }
 }
 
-function moveRight(textMap: string): string {
+function moveRight(textMap: string) {
   return swapStr(textMap, textMap.indexOf('R'), textMap.indexOf('R') + 1);
 }
-function moveLeft(textMap: string): string {
+function moveLeft(textMap: string) {
   return swapStr(textMap, textMap.indexOf('R') - 1, textMap.indexOf('R'));
 }
-function moveDown(textMap: string): string {
+function moveDown(textMap: string) {
   return swapStr(
     textMap,
     textMap.indexOf('R'),
     textMap.indexOf('R') + textMap.indexOf('\n') + 1,
   );
 }
-function moveUp(textMap: string): string {
+function moveUp(textMap: string) {
   return swapStr(
     textMap,
     textMap.indexOf('R') - textMap.indexOf('\n') - 1,
